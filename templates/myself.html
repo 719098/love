@@ -229,11 +229,16 @@ footer {
 Happy Birthday ❤️
 
 </footer>
-<audio id="bgm" autoplay loop>
+<audio id="bgm" loop>
     <source src="/static/1.mp3" type="audio/mpeg">
 </audio>
 
-
+<script>
+document.addEventListener("click", function () {
+    const music = document.getElementById("bgm");
+    music.play();
+}, { once: true });
+</script>
 <script>
 
 
