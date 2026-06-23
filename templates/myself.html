@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生日快樂</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body {
+    background: linear-gradient(135deg,#ff9ec4,#ffb6d9,#ffd1e8);
+    font-family: "Microsoft JhengHei", sans-serif;
+    margin:0;
+    min-height:100vh;
+}
+
+.navbar {
+    background-color:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+}
+
+.nav-link {
+    font-weight:bold;
+    color:#d63384 !important;
+}
+
+.nav-link:hover {
+    color:#ff1493 !important;
+}
+
+.main-content {
+    text-align:center;
+    padding-top:140px;
+    padding-bottom:80px;
+}
+
+.title-section {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    margin-bottom:50px;
+    flex-wrap:wrap;
+}
+
+h1 {
+    color:white;
+    font-size:60px;
+    font-weight:bold;
+    text-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+.main-photo {
+    width:240px;
+    height:240px;
+    object-fit:cover;
+    border-radius:20px;
+    border:5px solid white;
+    box-shadow:0 5px 15px rgba(0,0,0,0.25);
+}
+
+
+.message-box {
+    width:80%;
+    max-width:900px;
+    margin:auto;
+    background:rgba(255,255,255,0.92);
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    text-align:center;
+    font-size:22px;
+    line-height:2;
+    color:#333;
+}
+
+
+#countdown,
+#love-days {
+    display:block;
+    margin-top:15px;
+    font-size:32px;
+    font-weight:bold;
+    color:#e91e63;
+}
+
+
+footer {
+    text-align:center;
+    padding:20px;
+    color:white;
+}
+
+
+@media(max-width:768px){
+
+    h1{
+        font-size:40px;
+    }
+
+    .main-photo{
+        width:180px;
+        height:180px;
+    }
+
+    .message-box{
+        width:90%;
+        font-size:18px;
+    }
+
+    #countdown,
+    #love-days{
+        font-size:24px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar navbar-expand-lg fixed-top">
+
+<div class="container-fluid justify-content-end">
+
+<ul class="navbar-nav">
+
+<li class="nav-item">
+<a class="nav-link" href="/year1">第一年</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/year2">第二年</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/year3">第三年</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/year4">第四年</a>
+</li>
+
+</ul>
+
+</div>
+
+</nav>
+
+
+
+<div class="main-content">
+
+
+<div class="title-section">
+
+<h1>生日快樂 ❤️</h1>
+
+<img src="/static/1.png" class="main-photo" alt="合照">
+
+</div>
+
+
+
+<div class="message-box">
+
+
+<strong>若榛生日快樂 ❤️</strong>
+
+<br><br>
+
+
+今天是妳的生日，希望妳今天過得開開心心。
+
+<br>
+
+謝謝妳一直陪伴在我身邊。
+
+<br>
+
+希望未來的日子裡，
+
+<br>
+
+我們可以一起經歷更多美好的回憶。
+
+<br>
+
+讓我陪妳度過好多好多個生日。
+
+<br>
+
+我愛妳 
+
+
+<br><br>
+
+
+🎂 距離下一個生日還有
+
+<span id="countdown"></span>
+
+
+<br>
+
+
+❤️ 我們已經在一起
+
+<span id="love-days"></span>
+
+
+</div>
+
+
+</div>
+
+
+
+<footer>
+
+Happy Birthday ❤️
+
+</footer>
+
+
+
+<script>
+
+
+function updateCounters(){
+
+
+const now = new Date();
+
+
+// 生日日期 6月24日
+
+let birthday = new Date(
+    now.getFullYear(),
+    5,
+    24,
+    0,
+    0,
+    0
+);
+
+
+if(now > birthday){
+
+    birthday = new Date(
+        now.getFullYear()+1,
+        5,
+        24,
+        0,
+        0,
+        0
+    );
+
+}
+
+
+const birthdayDiff = birthday - now;
+
+
+const days = Math.floor(
+    birthdayDiff/(1000*60*60*24)
+);
+
+const hours = Math.floor(
+    (birthdayDiff/(1000*60*60))%24
+);
+
+const minutes = Math.floor(
+    (birthdayDiff/(1000*60))%60
+);
+
+const seconds = Math.floor(
+    (birthdayDiff/1000)%60
+);
+
+
+
+document.getElementById("countdown").innerHTML =
+days+" 天 "+
+hours+" 小時 "+
+minutes+" 分 "+
+seconds+" 秒";
+
+
+
+
+// 在一起日期 2023/03/19
+
+const loveDate = new Date("2023-03-19");
+
+
+const loveDiff = now - loveDate;
+
+
+const loveDays = Math.floor(
+    loveDiff/(1000*60*60*24)
+);
+
+
+
+document.getElementById("love-days").innerHTML =
+loveDays+" 天 ❤️";
+
+
+}
+
+
+
+updateCounters();
+
+setInterval(updateCounters,1000);
+
+
+</script>
+
+
+</body>
+</html>
