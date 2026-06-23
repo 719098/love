@@ -230,20 +230,35 @@ Happy Birthday ❤️
 
 </footer>
 <br>
+<div style="text-align:center;margin-bottom:30px;">
 
-<button class="btn btn-danger" onclick="playMusic()">
+<button class="btn btn-danger me-2" onclick="playMusic()">
 🎵 播放音樂
 </button>
+
+<button class="btn btn-secondary" onclick="pauseMusic()">
+⏸️ 暫停音樂
+</button>
+
+</div>
 
 <audio id="bgm" loop>
     <source src="/static/1.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+const bgm = document.getElementById("bgm");
+
 function playMusic(){
-    document.getElementById("bgm").play();
+    bgm.play();
+}
+
+function pauseMusic(){
+    bgm.pause();
 }
 </script>
+<br>
+<script>
 
 
 function updateCounters(){
