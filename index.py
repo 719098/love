@@ -32,6 +32,10 @@ def year3():
 def year4():
     return render_template("year4.html")
 
+@app.route("/story")
+def story():
+    return render_template("story.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
